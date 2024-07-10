@@ -57,12 +57,12 @@ namespace AccountProvider.Fuctions
                     //verify code using VerificationProvider
                     using var _httpClient = new HttpClient();
 
-                    //var verificationPayload = new
-                    //{
-                    //    Email = vm.Email,
-                    //    VerificationCode = vm.VerificationCode
-                    //};
-                    StringContent content = new StringContent(JsonConvert.SerializeObject(vm), Encoding.UTF8, "application/json");
+                    var verificationPayload = new
+                    {
+                        vm.Email,
+                        vm.VerificationCode
+                    };
+                    StringContent content = new StringContent(JsonConvert.SerializeObject(verificationPayload), Encoding.UTF8, "application/json");
 
                     var response = await _httpClient.PostAsync("https://verifikationskodprovider.azurewebsites.net/api/verify", content);
 
