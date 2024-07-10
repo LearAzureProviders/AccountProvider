@@ -43,7 +43,7 @@ namespace AccountProvider.Fuctions
                     _logger.LogError($" ERROR : Signup.JsonConvert.DeserializeObject<UserRegistrationModel> :: {ex.Message}");
                 }
 
-                 
+               
 
                 if (urr != null && !string.IsNullOrEmpty(urr.Email) && !string.IsNullOrEmpty(urr.Password))
                 {
@@ -65,7 +65,7 @@ namespace AccountProvider.Fuctions
                             //SEND VERIFICATION (Function) CODE
                             var verificationPayload = new
                             {
-                                Email = urr.Email
+                                urr.Email
                             };
                             var content = new StringContent(JsonConvert.SerializeObject(verificationPayload), Encoding.UTF8, "application/json");
                             var response = await _httpClient.PostAsync("https://verifikationskodprovider.azurewebsites.net/api/Lear?code=udnx8pP9X1REkr6V1UR6FD0C0s3E4r9qss4mnEE58UYZAzFun5VZJg%3D%3D", content);

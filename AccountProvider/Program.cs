@@ -14,7 +14,7 @@ var host = new HostBuilder()
         services.ConfigureFunctionsApplicationInsights();
 
 
-        services.AddDbContext<DataContext>(x => x.UseSqlServer(context.Configuration.GetConnectionString("SqlServer")));
+        services.AddDbContext<DataContext>(x => x.UseSqlServer(context.Configuration.GetConnectionString("LearDataBase")));
 
 
         services.AddDefaultIdentity<UserAccount>(x =>  
